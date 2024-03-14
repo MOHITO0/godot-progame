@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://we7anu6qad2s"]
+
+[ext_resource type="Script" path="res://scenes/intro.gd" id="1_a8hvo"]
+[ext_resource type="Texture2D" uid="uid://cmtfd8q6proh5" path="res://Web/Pictures/ozeno-odyssey.png" id="1_bk5wl"]
+
+[sub_resource type="Animation" id="Animation_x4yye"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kp2xb"]
+resource_name = "intro"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t1i4m"]
+_data = {
+"RESET": SubResource("Animation_x4yye"),
+"intro": SubResource("Animation_kp2xb")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_a8hvo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(115, 62)
+scale = Vector2(1.52, 1.22)
+texture = ExtResource("1_bk5wl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -5.0
+offset_top = -1.0
+offset_right = 235.0
+offset_bottom = 134.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t1i4m")
+}
